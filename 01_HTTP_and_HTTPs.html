@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>HTTP and HTTPS - CSCI 3230u</title>
+
+        <link href="images/uoit_logo_icon_32.ico" rel="icon" type="image/x-icon"/>
+        <link href="images/uoit_logo_icon_32.ico" rel="shortcut icon" type="image/x-icon"/>
+
+        <meta name="description" content="A lecture on web protocols" />
+		<meta name="author" content="Randy J. Fortier" />
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+
+		<link rel="stylesheet" href="css/reveal.css" />
+		<link rel="stylesheet" href="css/theme/black.css" id="theme" />
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/printable.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			// generating PDFs and printable documents
+            var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+            
+            // code syntax highlighting
+            /*
+            link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match(/print-pdf/gi) ? 'lib/css/zenburn.css' : 'lib/css/printable.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+            */
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section data-background="images/UOIT_background1.png"
+                         data-background-size="70%"
+				         data-transition="fad"
+                         class="title">
+					<h1 style="margin-left: 342px">Web Protocols</h1>
+					<h3 style="margin-left: 342px">HTTP and HTTPS</h3>
+					<p style="margin-left: 342px">
+						<small>
+                            Randy J. Fortier<br />
+                            <a href="mailto:randy.fortier@uoit.ca">randy.fortier@uoit.ca</a><br />
+                            <a href="http://twitter.com/randy_fortier">@randy_fortier</a>
+                        </small>
+					</p>
+				</section>
+
+				<section data-transition='fade'>
+					<h2>Outline</h2>
+					<ul>
+						<li>What is version control?
+                            <ul>
+                                <li>Centralized</li>
+                                <li>Decentralized</li>
+                            </ul>
+                        </li>
+						<li>How do we use version control?
+                            <ul>
+                                <li>Basic Operation of Git</li>
+                            </ul>
+                        </li>
+					</ul>
+				</section>
+
+				<section data-background="images/UOIT_background1.png"
+                         data-background-size="70%"
+				         data-transition="fad"
+                         class="title">
+					<h1 style="margin-left: 342px">Why Version Control?</h1>
+					<h3 style="margin-left: 342px">Motivation</h3>
+				</section>
+
+				<section data-transition='fade'>
+					<h2>What is Version Control?</h2>
+					<ul>
+                        <li>Software that records changes to files</li>
+                        <li>Version control lets you:
+                            <ul>
+                                <li>Revert to previous versions</li>
+                                <li>See the changes log
+                                    <ul>
+                                        <li>Along with messages, who submitted, etc.</li>
+                                    </ul>
+                                </li>
+                                <li>Share your code with the rest of your team
+                                    <ul>
+                                        <li>Including merging your work</li>
+                                    </ul>
+                                </li>
+                                <li>Backup/publish your work to a public repository
+                                    <ul>
+                                        <li>e.g. GitHub, BitBucket</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+					</ul>
+				</section>
+
+                <section data-transition='none'>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/01.png" 
+                             alt="centralized version control diagram 1" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/02.png" 
+                             alt="centralized version control diagram 2" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/03.png" 
+                             alt="centralized version control diagram 3" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/04.png" 
+                             alt="centralized version control diagram 4" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/05.png" 
+                             alt="centralized version control diagram 5" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/06.png" 
+                             alt="centralized version control diagram 6" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/07.png" 
+                             alt="centralized version control diagram 7" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/08.png" 
+                             alt="centralized version control diagram 8" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/09.png" 
+                             alt="centralized version control diagram 9" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/10.png" 
+                             alt="centralized version control diagram 10" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/11.png" 
+                             alt="centralized version control diagram 11" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/12.png" 
+                             alt="centralized version control diagram 12" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/13.png" 
+                             alt="centralized version control diagram 13" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Centralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/14.png" 
+                             alt="centralized version control diagram 14" />
+                    </section>
+                </section>
+
+                <section data-transition='none'>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/15.png" 
+                             alt="decentralized version control diagram 1" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/16.png" 
+                             alt="decentralized version control diagram 2" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/17.png" 
+                             alt="decentralized version control diagram 3" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/18.png" 
+                             alt="decentralized version control diagram 4" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/19.png" 
+                             alt="decentralized version control diagram 5" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/20.png" 
+                             alt="decentralized version control diagram 6" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/21.png" 
+                             alt="decentralized version control diagram 7" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/22.png" 
+                             alt="decentralized version control diagram 8" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/23.png" 
+                             alt="decentralized version control diagram 9" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/24.png" 
+                             alt="decentralized version control diagram 10" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/25.png" 
+                             alt="decentralized version control diagram 11" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/26.png" 
+                             alt="decentralized version control diagram 12" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/27.png" 
+                             alt="decentralized version control diagram 13" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/28.png" 
+                             alt="decentralized version control diagram 14" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/29.png" 
+                             alt="decentralized version control diagram 15" />
+                    </section>
+                    <section data-transition='none'>
+                        <h2>Decentralized Version Control</h2>
+                        <img style="border: none; box-shadow: none"
+                             src="images/01_version_control/30.png" 
+                             alt="decentralized version control diagram 16" />
+                    </section>
+                </section>
+
+				<section data-background="images/UOIT_background1.png"
+                         data-background-size="70%"
+				         data-transition="fad"
+                         class="title">
+					<h1 style="margin-left: 30%">Using Git</h1>
+					<h3 style="margin-left: 30%">Version Control Practicum</h3>
+				</section>
+
+                <section>
+					<h2>Getting Ready</h2>
+					<ul>
+                        <li>Create your work in a folder</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ cd /home/bsmith
+$ mkdir myproj1
+$ cd myproj1
+…
+                    </code></pre>
+				</section>
+
+                <section>
+					<h2>Creating a Local Repository</h2>
+					<ul>
+                        <li>Tell git to manage the folder</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ git init
+$ git add .
+$ git commit –m "Initial commit"
+                    </code></pre>
+				</section>
+
+                <section>
+					<h2>Make Changes</h2>
+					<ul>
+                        <li>Add additional files:</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ git add myfile1.cpp
+$ git add myfile2.cpp myfile3.cpp
+$ git commit -m "Adding authorization"
+                    </code></pre>
+				</section>
+
+                <section>
+					<h2>Observing Changes</h2>
+					<ul>
+                        <li>Before commit, view pending changes (summary):</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ git status
+On branch master
+Changes to be committed:
+    (use "git reset HEAD &lt;file&gt;..." to unstage)
+
+          new file:  library.cpp
+
+Changes not staged for commit:
+    (use "git add &lt;file&gt;..." to update what will be committed)
+    (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+
+          modified:   sample.cpp
+                    </code></pre>
+				</section>
+
+                <section>
+					<h2>Observing Changes</h2>
+					<ul>
+                        <li>Before commit, view pending changes (detail):</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ git add library.cpp
+$ git diff --cached
+  diff --git a/library.cpp b/library.cpp
+  new file mode 100644
+  index 0000000..55d5de0
+  --- /dev/null
+  +++ b/library.cpp
+  @@ -0,0 +1,3 @@
+  +void calculate(int a, int b) {
+  +       return a + b;
+  +}
+                    </code></pre>
+				</section>
+
+                <section>
+					<h2>Using a Remote Repository</h2>
+					<ul>
+                        <li>Create your repository on GitHub (or BitBucket)</li>
+                        <li>Tell git to clone the project</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ git clone https://github.com/user1/myproj2.git myproj2
+                    </code></pre>
+				</section>
+
+                <section>
+					<h2>Push to Remote Repository</h2>
+					<ul>
+                        <li>Push changes back to remote repository:</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ git commit -m "Added hashing"
+$ git push -u origin master
+                    </code></pre>
+				</section>
+
+                <section>
+					<h2>Pushing Local to Remote</h2>
+					<ul>
+                        <li>Push changes back to remote repository:</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ git commit -m "Added hashing"
+$ git remote add origin https://github.com/user1/myproj2.git
+$ git push -u origin master
+                    </code></pre>
+				</section>
+
+                <section>
+					<h2>Downloading Changes</h2>
+					<ul>
+                        <li>If you are about to start work, it is best to update
+  your code before you begin</li>
+                        <li>Download any changes in the remote repository:</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ git pull
+                    </code></pre>
+				</section>
+
+				<section data-background="images/UOIT_background1.png"
+                         data-background-size="70%"
+				         data-transition="fad"
+                         class="title">
+					<h1 style="margin-left: 30%">Using Git</h1>
+					<h3 style="margin-left: 30%">Advanced Practicum</h3>
+				</section>
+
+                <section>
+					<h2>Branches</h2>
+					<ul>
+                        <li>A branch is a separate changelog
+                            <ul>
+                                <li>Any changes made to a branch do not affect other</li>
+                                    branches
+                                <li>Useful for experimental features</li>
+                                <li>Sometimes branches are kept separate
+                                    <ul>
+                                        <li>e.g. Mobile-optimized kernel</li>
+                                    </ul>
+                                </li>
+                                <li>Sometimes branches are merged
+                                    <ul>
+                                        <li>e.g. When an experimental feature becomes stable</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+					</ul>
+				</section>
+
+                <section>
+					<h2>Create a Branch</h2>
+					<ul>
+                        <li>Create a new branch:</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ git branch mobileOptimized
+$ git branch
+* master
+ mobileOptimized
+                    </code></pre>
+					<ul>
+                        <li>Switch to our new branch:</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ git checkout mobileOptimized
+                    </code></pre>
+				</section>
+
+                <section>
+					<h2>Update Branch and Merge</h2>
+					<ul>
+                        <li>Make changes</li>
+                        <li>Switch to the master branch:</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ git checkout master
+                    </code></pre>
+					<ul>
+                        <li>Merge the branches:</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ git merge mobileOptimized
+                    </code></pre>
+				</section>
+
+                <section>
+					<h2>Handle Conflicts</h2>
+					<ul>
+                        <li>Find the conflicts (if any):</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+  $ git diff
+  diff --cc mobile.cpp
+  index 366e2d1,26e7183..0000000
+  --- a/mobile.cpp
+  +++ b/mobile.cpp
+  @@@ -1,1 -1,3 +1,7 @@@
+  - /* nothing goes here for non-mobile systems */
+  ++<<<<<<< HEAD
+  ++/* nothing goes here for non-mobile systems */
+  ++=======
+  + void saveBattery() {
+  +       return;
+   -}
+  ++}
+  ++>>>>>>> mobileOptimized
+                    </code></pre>
+				</section>
+
+                <section>
+					<h2>View Logs</h2>
+					<ul>
+                        <li>View the commit history:</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ git log
+                    </code></pre>
+				</section>
+
+                <section>
+					<h2>View Logs - Graphical</h2>
+					<ul>
+                        <li>View the commit history in a graphical window:</li>
+					</ul>
+					<pre><code class="hljs bash" data-trim contenteditable>
+$ gitk
+                    </code></pre>
+				</section>
+
+				<section>
+					<h2>Wrap-Up</h2>
+					<ul>
+                        <li>In this section, we learned about:
+                            <ul>
+                                <li>Centralized vs. decentralized version control</li>
+                                <li>How to use git to manage your source code and other files</li>
+                            </ul>
+                        </li>
+					</ul>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+		<script src="js/uoit.js"></script>
+
+	</body>
+</html>

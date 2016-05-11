@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Lecture Notes - CSCI 3230u</title>
+        <link href="images/uoit_logo_icon_32.ico" rel="icon" type="image/x-icon"/>
+        <link href="images/uoit_logo_icon_32.ico" rel="shortcut icon" type="image/x-icon"/>
+        <link rel="stylesheet" href="styles/main.css" type="text/css" />
+        <link rel="stylesheet" href="styles/phone.css" type="text/css" media="screen and (max-width: 700px)"/>
+        <script>
+            //var url;
+            function showPopup(url) {
+                window.open(url,
+                'open_window',
+                'maximized=yes, menubar=no, toolbar=no, location=no, directories=no, status=no, scrollbars=no, resizable=yes, dependent, height=screen.availHeight, width=screen.availWidth, left=0, top=0');
+            }
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <header class="logo">
+                <div id="logo">
+                    <a href="#">
+                        <img src="images/logo.png" alt="UOIT Logo" />
+                    </a>
+                </div>
+                <div id="title">
+                    <h2 title="Web Application Development">CSCI 3230u</h2>
+                </div>
+            </header>
+            <nav>
+                <a href="#" id="menu-icon">&#9776;</a>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="lecture_notes.html" class="active">Lecture Notes</a></li>
+                    <li><a href="assignments.html">Assignments</a></li>
+                    <li><a href="labs.html">Labs</a></li>
+                </ul>
+            </nav>
+            <div id="content">
+                <div>
+                    <h2>Lecture Notes</h2>
+                    <ol>
+                        <li><a class="noPadding" href="01_HTTP_and_HTTPs.html" target="_blank" onclick="showPopup(this.href)">HTTP and HTTPs</a>
+                            <ul>
+                                <li><a class="noPadding" href="01_version_control.pdf">Printable Version</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="noPadding" href="02_build_tools.html" target="_blank" onclick="showPopup(this.href)">Build tools</a>
+                            <ul>
+                                <li><a class="noPadding" href="02_build_tools.pdf">Printable Version</a></li>
+                                <li><a class="noPadding" href="samples/02_gradle.md">Exercise Script (Gradle)</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="noPadding" href="03_user_interfaces.html" target="_blank" onclick="showPopup(this.href)">User interfaces</a>
+                            
+                            <ul>
+                                <li><a class="noPadding" href="03_user_interfaces.pdf">Printable Version</a></li>
+                                <li><a class="noPadding" href="samples/03_User_Interfaces/Demo1_UI.zip">Exercise #1 Code (Programmatic UI)</a></li>
+                                <li><a class="noPadding" href="samples/03_User_Interfaces/Demo2_UI.zip">Exercise #2 Code (FXML-based UI)</a></li>
+                                <li><a class="noPadding" href="samples/03_User_Interfaces/Demo3_UI.zip">Exercise #3 Code (2D Graphics)</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="noPadding" href="04_files_and_streams.html" target="_blank" onclick="showPopup(this.href)">File I/O, streams</a>
+                            <ul>
+                                <li><a class="noPadding" href="04_files_and_streams.pdf">Printable Version</a></li>
+                                <li><a class="noPadding" href="samples/04_File_IO/FindAverage.zip">Exercise #1 Code (Find Average)</a></li>
+                                <li><a class="noPadding" href="samples/04_File_IO/WordCounter.zip">Exercise #2 Code (Word Count)</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="noPadding" href="05_tcp_udp_sockets.html" target="_blank" onclick="showPopup(this.href)">Sockets, access data (Updated: April 6th, 2016)</a>                        
+                            <ul>
+                                <li><a class="noPadding" href="05_tcp_udp_sockets.pdf">Printable Version</a></li>
+                                <li><a class="noPadding" href="samples/05_Sockets/demo_sockets.zip">Exercise Code (Web browser/server)</a></li>
+                                <li><a class="noPadding" href="samples/05_Sockets/MoreSocketExamples.zip">Additional Samples (Download JSON, XML data, DNS) (Updated:  April 6th, 2016)</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="noPadding" href="06_multithreading.html" target="_blank" onclick="showPopup(this.href)">Multi-threading</a>
+                            <ul>
+                                <li><a class="noPadding" href="samples/06_Multithreading/HorseRace.java">Exercise #1 Code (Multi-threaded horse race)</a></li>
+                                <li><a class="noPadding" href="samples/06_Multithreading/MultiThreadedSockets.zip">Exercise #2 Code (Multi-threaded web server and client)</a></li>
+                                <li><a class="noPadding" href="06_multithreading.pdf">Printable Version</a></li>
+                            </ul>
+                        </li>                        
+                        <li><a class="noPadding" href="07_libgdx.html" target="_blank" onclick="showPopup(this.href)">Libraries (LibGDX)</a>
+                            <ul>
+                                <li><a class="noPadding" href="samples/07_LibGDX/BaseProject.zip">Base Project Code</a></li>
+                                <li><a class="noPadding" href="samples/07_LibGDX/sample1.zip">Exercise #1 Code (Basic Graphics)</a></li>
+                                <li><a class="noPadding" href="samples/07_LibGDX/sample2.zip">Exercise #2 Code (Physics and Controls)</a></li>
+                                <li><a class="noPadding" href="samples/07_LibGDX/sample3.zip">Exercise #3 Code (Sound and Music)</a></li>
+                                <li><a class="noPadding" href="samples/07_LibGDX/sample4.zip">Exercise #4 Code (Artificial Intelligence)</a></li>
+                                <li><a class="noPadding" href="07_libgdx.pdf">Printable Version</a></li>
+                            </ul>
+                        </li>                        
+                    </ol>
+                </div>
+            </div>
+            <footer class="info">
+                <section class="twocol">
+                    <h3>Contact</h3>
+                    <p title="2000 Simcoe St. N.  Oshawa, ON  L1H 7K4">
+                        905-721-8668 ext. 2114<br />
+                        randy.fortier&#64;uoit.ca<br />
+                    </p>
+                </section>
+                <section class="twocol lastcol">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><img title="randy.fortier&#64;uoit.ca" src="images/social/email.png" alt="E-Mail" /></li>
+                        <li><a href="https://plus.google.com/+RandyFortier/posts"><img src="images/social/google+.png" alt="Google+" /></a></li>
+                        <li><a href="https://twitter.com/randy_fortier"><img src="images/social/twitter.png" alt="Twitter" /></a></li>
+<!--
+                        <li><a href="#"><img src="images/social/youtube.png" alt="YouTube" /></a></li>
+                        <li><a href="#"><img src="images/social/rss.png" alt="RSS" /></a></li>
+-->
+                    </ul>
+                </section>
+            </footer>
+            <footer class="copyright">
+                &copy; Copyright - Randy J. Fortier - 2016
+            </footer>
+        </div>
+    </body>
+</html>
