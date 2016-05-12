@@ -70,491 +70,395 @@
 				<section data-transition='fade'>
 					<h2>Outline</h2>
 					<ul>
-						<li>What is version control?
+                        <li>Network application architectures</li>
+                        <li>Hypertext Transfer Protocol (HTTP)
                             <ul>
-                                <li>Centralized</li>
-                                <li>Decentralized</li>
+                                <li>Requests</li>
+                                <li>Responses</li>
                             </ul>
                         </li>
-						<li>How do we use version control?
+						<li>Secure HTTP (HTTPS)
                             <ul>
-                                <li>Basic Operation of Git</li>
-                            </ul>
-                        </li>
-					</ul>
-				</section>
-
-				<section data-background="images/UOIT_background1.png"
-                         data-background-size="70%"
-				         data-transition="fad"
-                         class="title">
-					<h1 style="margin-left: 342px">Why Version Control?</h1>
-					<h3 style="margin-left: 342px">Motivation</h3>
-				</section>
-
-				<section data-transition='fade'>
-					<h2>What is Version Control?</h2>
-					<ul>
-                        <li>Software that records changes to files</li>
-                        <li>Version control lets you:
-                            <ul>
-                                <li>Revert to previous versions</li>
-                                <li>See the changes log
-                                    <ul>
-                                        <li>Along with messages, who submitted, etc.</li>
-                                    </ul>
-                                </li>
-                                <li>Share your code with the rest of your team
-                                    <ul>
-                                        <li>Including merging your work</li>
-                                    </ul>
-                                </li>
-                                <li>Backup/publish your work to a public repository
-                                    <ul>
-                                        <li>e.g. GitHub, BitBucket</li>
-                                    </ul>
-                                </li>
+                                <li>Transport Layer Security (TLS)</li>
+                                <li>Negotiating cipher</li>
+                                <li>Authentication</li>
+                                <li>Key exchange</li>
                             </ul>
                         </li>
 					</ul>
 				</section>
 
-                <section data-transition='none'>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/01.png" 
-                             alt="centralized version control diagram 1" />
+                <section data-transition="fade">
+                    <section data-background="images/UOIT_background1.png"
+                             data-background-size="70%"
+                             data-transition="fade"
+                             class="title">
+                        <h1 style="margin-left: 342px">HTTP and HTTPS</h1>
+                        <h3 style="margin-left: 342px">Network Application Architectures</h3>
                     </section>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/02.png" 
-                             alt="centralized version control diagram 2" />
+
+                    <section data-transition='fade'>
+                        <h2>Two-Tiered Architectures</h2>
+                        <ul>
+                            <li>Server
+                                <ul>
+                                    <li>Listens for connections</li>
+                                    <li>Responds to client requests</li>
+                                </ul>
+                            </li>
+                            <li>Client
+                                <ul>
+                                    <li>Initiates the connection with the server</li>
+                                    <li>Issues a request to that server</li>
+                                    <li>Processes the server's response</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <img src="images/01_http_and_https/two_tiered.png" 
+                             width="500px" alt="Two Tiered Architecture" />
                     </section>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/03.png" 
-                             alt="centralized version control diagram 3" />
+
+                    <section data-transition='fade'>
+                        <h2>Three-Tiered Architectures</h2>
+                        <ul>
+                            <li>An additional layer is used for data storage
+                                <ul>
+                                    <li>SQL-based storage</li>
+                                    <li>NoSQL (HTTP-based) storage</li>
+                                </ul>
+                            </li>
+                            <li>The server accesses this data over the network</li>
+                        </ul>
+                        <img src="images/01_http_and_https/three_tiered.png" 
+                             width="500px" alt="Three Tiered Architecture" />
                     </section>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/04.png" 
-                             alt="centralized version control diagram 4" />
+                </section>
+                
+                <section data-transition="fade">
+                    <section data-background="images/UOIT_background2.png"
+                             data-background-size="70%"
+                             data-transition="fade"
+                             class="title">
+                        <h1 style="margin-left: 342px">HTTP and HTTPS</h1>
+                        <h3 style="margin-left: 342px">Hypertext Transfer Protocol (HTTP)</h3>
                     </section>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/05.png" 
-                             alt="centralized version control diagram 5" />
+                    
+                    <section data-transition='fade'>
+                        <h2>Hypertext Transfer Protocol</h2>
+                        <ul>
+                            <li>Common commands:
+                                <ul>
+                                    <li>GET</li>
+                                    <li>POST</li>
+                                    <li>PUT</li>
+                                    <li>DELETE</li>
+                                    <li>HEAD</li>
+                                </ul>
+                            </li>
+                        </ul>
                     </section>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/06.png" 
-                             alt="centralized version control diagram 6" />
+                    
+                    <section data-transition='fade'>
+                        <h2>Hypertext Transfer Protocol</h2>
+                        <ul>
+                            <li>Common commands:
+                                <ul>
+                                    <li>GET - download data</li>
+                                    <li>POST - upload and/or download data</li>
+                                    <li>PUT - upload a new file</li>
+                                    <li>DELETE - delete a file</li>
+                                    <li>HEAD - download meta-data (headers) for a file</li>
+                                </ul>
+                            </li>
+                        </ul>
                     </section>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/07.png" 
-                             alt="centralized version control diagram 7" />
+                    
+                    <section data-transition='fade'>
+                        <h2>Hypertext Transfer Protocol</h2>
+                        <ul>
+                            <li>Example command</li>
+                        </ul>
+                        <pre><code class="hljs bash" data-trim contenteditable>
+GET /folder/file.html HTTP/1.0
+                        </code></pre>
                     </section>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/08.png" 
-                             alt="centralized version control diagram 8" />
+                    
+                    <section data-transition='fade'>
+                        <h2>HTTP Requests</h2>
+                        <ul>
+                            <li>A request is issued by the client (a web browser)</li>
+                            <li>The command is the most important part of the request</li>
+                            <li>Request headers contain meta data about the request and browser
+                                <ul>
+                                    <li>Browser (name and version) sending the request</li>
+                                    <li>Time/date when the request was issued</li>
+                                    <li>Formats that the browser can handle</li>
+                                    <li>Site being visited</li>
+                                    <li>HEAD - download meta-data (headers) for a file</li>
+                                </ul>
+                            </li>
+                        </ul>
                     </section>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/09.png" 
-                             alt="centralized version control diagram 9" />
+
+                    <section data-transition='fade'>
+                        <h2>HTTP Requests</h2>
+                        <ul>
+                            <li>Example request:</li>
+                        </ul>
+                        <pre><code class="hljs bash" data-trim contenteditable>
+GET / HTTP/1.1
+Host: www.google.ca
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0
+Accept: text/html
+Accept-Language: en-US,en
+Accept-Charset: ISO-8859-1,utf-8
+Content-length: 0
+                        </code></pre>
                     </section>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/10.png" 
-                             alt="centralized version control diagram 10" />
+                    
+                    <section data-transition='fade'>
+                        <h2>HTTP Requests</h2>
+                        <ul>
+                            <li>To capture a request:
+                                <ul>
+                                    <li>Start a listener:</li>
+                                    <pre><code class="hljs bash" data-trim contenteditable>
+$ nc -l 8080
+                                    </code></pre>
+                                    <li>Direct your browser to:</li>
+                                    <pre><code class="hljs bash" data-trim contenteditable>
+http://localhost:8080/
+                                    </code></pre>
+                                </ul>
+                            </li>
+                        </ul>
                     </section>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/11.png" 
-                             alt="centralized version control diagram 11" />
+                    
+                    <section data-transition='fade'>
+                        <h2>HTTP Responses</h2>
+                        <ul>
+                            <li>A response is issued by the web server in response to a request</li>
+                            <li>The requested file is often the most important part of the response</li>
+                            <li>Response headers contain meta data about the response and web server
+                                <ul>
+                                    <li>Server (name and version) sending the response</li>
+                                    <li>Time/date when the response was issued</li>
+                                    <li>Amount of data being transmitted</li>
+                                    <li>Data type of the data included</li>
+                                    <li>Cookies being transmitted</li>
+                                </ul>
+                            </li>
+                        </ul>
                     </section>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/12.png" 
-                             alt="centralized version control diagram 12" />
+
+                    <section data-transition='fade'>
+                        <h2>HTTP Responses</h2>
+                        <ul>
+                            <li>Example response:</li>
+                        </ul>
+                        <pre><code class="hljs bash" data-trim contenteditable>
+HTTP/1.1 302 Found
+Location: https://www.google.ca/
+Content-Type: text/html; charset=UTF-8
+Date: Sat, 18 Aug 2012 18:42:48 GMT
+Content-Length: 219
+&lt;HTML&gt;&lt;HEAD&gt;&lt;meta http-equiv="content-type" 
+content="text/html;charset=utf-8"&gt;
+&lt;TITLE&gt;302 Moved&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;BODY&gt;
+&lt;H1&gt;302 Moved&lt;/H1&gt;
+The document has moved &lt;A HREF="https://www.google.ca/"&gt;here&lt;/A&gt;.
+&lt;/BODY&gt;&lt;/HTML&gt;
+                        </code></pre>
                     </section>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/13.png" 
-                             alt="centralized version control diagram 13" />
-                    </section>
-                    <section data-transition='none'>
-                        <h2>Centralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/14.png" 
-                             alt="centralized version control diagram 14" />
+                    
+                    <section data-transition='fade'>
+                        <h2>HTTP Responses</h2>
+                        <ul>
+                            <li>To capture a response:
+                                <ul>
+                                    <li>Connect via telnet:</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <pre><code class="hljs bash" data-trim contenteditable>
+$ telnet stackoverflow.com 80
+GET / HTTP/1.0
+Host: stackoverflow.com
+
+                        </code></pre>
                     </section>
                 </section>
 
-                <section data-transition='none'>
-                    <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/15.png" 
-                             alt="decentralized version control diagram 1" />
+                <section data-transition="fade">
+                    <section data-background="images/UOIT_background3.png"
+                             data-background-size="70%"
+                             data-transition="fade"
+                             class="title">
+                        <h1 style="margin-left: 342px">HTTP and HTTPS</h1>
+                        <h3 style="margin-left: 342px">Secure HTTP (HTTPS)</h3>
                     </section>
-                    <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/16.png" 
-                             alt="decentralized version control diagram 2" />
+                    
+                    <section data-transition='fade'>
+                        <h2>Secure HTTP</h2>
+                        <ul>
+                            <li>The secure HTTP protocol is implemented by:
+                                <ul>
+                                    <li>TLS</li>
+                                    <li>SSL</li>
+                                </ul>
+                            </li>
+                        </ul>
                     </section>
-                    <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/17.png" 
-                             alt="decentralized version control diagram 3" />
+                    
+                    <section data-transition='fade'>
+                        <h2>Transport Layer Security (TLS)</h2>
+                        <ul>
+                            <li>Basic outline of the TLS handshake:
+                                <ol>
+                                    <li>Exchange information about cipher capability</li>
+                                    <li>Exchange certificates (or public keys)</li>
+                                    <li>Generate and share secret key</li>
+                                    <li>Confirm secret key</li>
+                                </ol>
+                            </li>
+                        </ul>
                     </section>
+                    
                     <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
+                        <h2>TLS Handshake</h2>
                         <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/18.png" 
-                             alt="decentralized version control diagram 4" />
+                             src="images/01_http_and_https/tls_step1.png" 
+                             alt="TLS handshake step 1" />
                     </section>
+                    
                     <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
+                        <h2>TLS Handshake</h2>
                         <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/19.png" 
-                             alt="decentralized version control diagram 5" />
+                             src="images/01_http_and_https/tls_step2.png" 
+                             alt="TLS handshake step 2" />
                     </section>
+                    
                     <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
+                        <h2>TLS Handshake</h2>
                         <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/20.png" 
-                             alt="decentralized version control diagram 6" />
+                             src="images/01_http_and_https/tls_step3.png" 
+                             alt="TLS handshake step 3" />
                     </section>
+                    
                     <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
+                        <h2>TLS Handshake</h2>
                         <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/21.png" 
-                             alt="decentralized version control diagram 7" />
+                             src="images/01_http_and_https/tls_step4.png" 
+                             alt="TLS handshake step 4" />
                     </section>
+                    
                     <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
+                        <h2>TLS Handshake</h2>
                         <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/22.png" 
-                             alt="decentralized version control diagram 8" />
+                             src="images/01_http_and_https/tls_step5.png" 
+                             alt="TLS handshake step 5" />
                     </section>
+                    
                     <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
+                        <h2>TLS Handshake</h2>
                         <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/23.png" 
-                             alt="decentralized version control diagram 9" />
+                             src="images/01_http_and_https/tls_step6.png" 
+                             alt="TLS handshake step 6" />
                     </section>
+                    
                     <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
+                        <h2>TLS Handshake</h2>
                         <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/24.png" 
-                             alt="decentralized version control diagram 10" />
+                             src="images/01_http_and_https/tls_step7.png" 
+                             alt="TLS handshake step 7" />
                     </section>
+                    
                     <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
+                        <h2>TLS Handshake</h2>
                         <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/25.png" 
-                             alt="decentralized version control diagram 11" />
+                             src="images/01_http_and_https/tls_step8.png" 
+                             alt="TLS handshake step 8" />
                     </section>
+                    
                     <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
+                        <h2>TLS Handshake</h2>
                         <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/26.png" 
-                             alt="decentralized version control diagram 12" />
+                             src="images/01_http_and_https/tls_step9.png" 
+                             alt="TLS handshake step 9" />
                     </section>
+                    
                     <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
+                        <h2>TLS Handshake</h2>
                         <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/27.png" 
-                             alt="decentralized version control diagram 13" />
+                             src="images/01_http_and_https/tls_step10.png" 
+                             alt="TLS handshake step 10" />
                     </section>
+                    
                     <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
+                        <h2>TLS Handshake</h2>
                         <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/28.png" 
-                             alt="decentralized version control diagram 14" />
+                             src="images/01_http_and_https/tls_step11.png" 
+                             alt="TLS handshake step 11" />
                     </section>
+                    
                     <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
+                        <h2>TLS Handshake</h2>
                         <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/29.png" 
-                             alt="decentralized version control diagram 15" />
+                             src="images/01_http_and_https/tls_step12.png" 
+                             alt="TLS handshake step 12" />
                     </section>
-                    <section data-transition='none'>
-                        <h2>Decentralized Version Control</h2>
-                        <img style="border: none; box-shadow: none"
-                             src="images/01_version_control/30.png" 
-                             alt="decentralized version control diagram 16" />
+                    
+                    <section>
+                        <h2>Keys</h2>
+                        <ul>
+                            <li>Secret keys
+                                <ul>
+                                    <li>Both sender and receiver use the same key</li>
+                                    <li>Used by encryption algorithm to encrypt</li>
+                                    <li>Used by decryption algorithm to decrypt</li>
+                                    <li>Must be kept confidential, once shared</li>
+                                </ul>
+                            </li>
+                            <li>Public and private keys
+                                <ul>
+                                    <li>Public:  Shared with everyone</li>
+                                    <li>Private:  Kept confidential</li>
+                                    <li>Same algorithm, different keys to encrypt/decrypt</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h2>Certificates</h2>
+                        <ul>
+                            <li>Certificate authorities (CA)
+                                <ul>
+                                    <li>Trusted third party responsible for generating certificates</li>
+                                    <li>Their public key is widely known (installed in browsers)</li>
+                                </ul>
+                            </li>
+                            <li>A certificate is basically an encrypted public key
+                                <ul>
+                                    <li>Self-signed:  A public key encrypted with its matching private key</li>
+                                    <li>CA-authorized:  A public key encrypted with the private key of a certificate authority</li>
+                                </ul>
+                            </li>
+                            <li>TLS and SSL use X.509 format certificates</li>
+                        </ul>
                     </section>
                 </section>
 
-				<section data-background="images/UOIT_background1.png"
-                         data-background-size="70%"
-				         data-transition="fad"
-                         class="title">
-					<h1 style="margin-left: 30%">Using Git</h1>
-					<h3 style="margin-left: 30%">Version Control Practicum</h3>
-				</section>
-
-                <section>
-					<h2>Getting Ready</h2>
-					<ul>
-                        <li>Create your work in a folder</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ cd /home/bsmith
-$ mkdir myproj1
-$ cd myproj1
-…
-                    </code></pre>
-				</section>
-
-                <section>
-					<h2>Creating a Local Repository</h2>
-					<ul>
-                        <li>Tell git to manage the folder</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ git init
-$ git add .
-$ git commit –m "Initial commit"
-                    </code></pre>
-				</section>
-
-                <section>
-					<h2>Make Changes</h2>
-					<ul>
-                        <li>Add additional files:</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ git add myfile1.cpp
-$ git add myfile2.cpp myfile3.cpp
-$ git commit -m "Adding authorization"
-                    </code></pre>
-				</section>
-
-                <section>
-					<h2>Observing Changes</h2>
-					<ul>
-                        <li>Before commit, view pending changes (summary):</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ git status
-On branch master
-Changes to be committed:
-    (use "git reset HEAD &lt;file&gt;..." to unstage)
-
-          new file:  library.cpp
-
-Changes not staged for commit:
-    (use "git add &lt;file&gt;..." to update what will be committed)
-    (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
-
-          modified:   sample.cpp
-                    </code></pre>
-				</section>
-
-                <section>
-					<h2>Observing Changes</h2>
-					<ul>
-                        <li>Before commit, view pending changes (detail):</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ git add library.cpp
-$ git diff --cached
-  diff --git a/library.cpp b/library.cpp
-  new file mode 100644
-  index 0000000..55d5de0
-  --- /dev/null
-  +++ b/library.cpp
-  @@ -0,0 +1,3 @@
-  +void calculate(int a, int b) {
-  +       return a + b;
-  +}
-                    </code></pre>
-				</section>
-
-                <section>
-					<h2>Using a Remote Repository</h2>
-					<ul>
-                        <li>Create your repository on GitHub (or BitBucket)</li>
-                        <li>Tell git to clone the project</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ git clone https://github.com/user1/myproj2.git myproj2
-                    </code></pre>
-				</section>
-
-                <section>
-					<h2>Push to Remote Repository</h2>
-					<ul>
-                        <li>Push changes back to remote repository:</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ git commit -m "Added hashing"
-$ git push -u origin master
-                    </code></pre>
-				</section>
-
-                <section>
-					<h2>Pushing Local to Remote</h2>
-					<ul>
-                        <li>Push changes back to remote repository:</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ git commit -m "Added hashing"
-$ git remote add origin https://github.com/user1/myproj2.git
-$ git push -u origin master
-                    </code></pre>
-				</section>
-
-                <section>
-					<h2>Downloading Changes</h2>
-					<ul>
-                        <li>If you are about to start work, it is best to update
-  your code before you begin</li>
-                        <li>Download any changes in the remote repository:</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ git pull
-                    </code></pre>
-				</section>
-
-				<section data-background="images/UOIT_background1.png"
-                         data-background-size="70%"
-				         data-transition="fad"
-                         class="title">
-					<h1 style="margin-left: 30%">Using Git</h1>
-					<h3 style="margin-left: 30%">Advanced Practicum</h3>
-				</section>
-
-                <section>
-					<h2>Branches</h2>
-					<ul>
-                        <li>A branch is a separate changelog
-                            <ul>
-                                <li>Any changes made to a branch do not affect other</li>
-                                    branches
-                                <li>Useful for experimental features</li>
-                                <li>Sometimes branches are kept separate
-                                    <ul>
-                                        <li>e.g. Mobile-optimized kernel</li>
-                                    </ul>
-                                </li>
-                                <li>Sometimes branches are merged
-                                    <ul>
-                                        <li>e.g. When an experimental feature becomes stable</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-					</ul>
-				</section>
-
-                <section>
-					<h2>Create a Branch</h2>
-					<ul>
-                        <li>Create a new branch:</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ git branch mobileOptimized
-$ git branch
-* master
- mobileOptimized
-                    </code></pre>
-					<ul>
-                        <li>Switch to our new branch:</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ git checkout mobileOptimized
-                    </code></pre>
-				</section>
-
-                <section>
-					<h2>Update Branch and Merge</h2>
-					<ul>
-                        <li>Make changes</li>
-                        <li>Switch to the master branch:</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ git checkout master
-                    </code></pre>
-					<ul>
-                        <li>Merge the branches:</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ git merge mobileOptimized
-                    </code></pre>
-				</section>
-
-                <section>
-					<h2>Handle Conflicts</h2>
-					<ul>
-                        <li>Find the conflicts (if any):</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-  $ git diff
-  diff --cc mobile.cpp
-  index 366e2d1,26e7183..0000000
-  --- a/mobile.cpp
-  +++ b/mobile.cpp
-  @@@ -1,1 -1,3 +1,7 @@@
-  - /* nothing goes here for non-mobile systems */
-  ++<<<<<<< HEAD
-  ++/* nothing goes here for non-mobile systems */
-  ++=======
-  + void saveBattery() {
-  +       return;
-   -}
-  ++}
-  ++>>>>>>> mobileOptimized
-                    </code></pre>
-				</section>
-
-                <section>
-					<h2>View Logs</h2>
-					<ul>
-                        <li>View the commit history:</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ git log
-                    </code></pre>
-				</section>
-
-                <section>
-					<h2>View Logs - Graphical</h2>
-					<ul>
-                        <li>View the commit history in a graphical window:</li>
-					</ul>
-					<pre><code class="hljs bash" data-trim contenteditable>
-$ gitk
-                    </code></pre>
-				</section>
 
 				<section>
 					<h2>Wrap-Up</h2>
 					<ul>
                         <li>In this section, we learned about:
                             <ul>
-                                <li>Centralized vs. decentralized version control</li>
-                                <li>How to use git to manage your source code and other files</li>
+                                <li>Hypertext Transfer Protocol (HTTP)</li>
+                                <li>Secure HTTP via Transport Layer Security (TLS)</li>
+                                <li>Encryption keys, certificates, and certificate authorities</li>
                             </ul>
                         </li>
 					</ul>
