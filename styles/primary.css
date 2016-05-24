@@ -15,6 +15,15 @@ body {
     font-family: Montserrat;
 }
 
+span.code {
+    font-family: monospace;
+    font-size: 80%;
+}
+
+.smaller li {
+    font-size: 75%;
+}
+
 h1,h2,h3,h4,h5,h6 {
     font-family: 'Caveat';
     margin-top: 30px;
