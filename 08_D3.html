@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>D3 - CSCI 3230u</title>
+
+        <link href="images/uoit_logo_icon_32.ico" rel="icon" type="image/x-icon"/>
+        <link href="images/uoit_logo_icon_32.ico" rel="shortcut icon" type="image/x-icon"/>
+
+        <meta name="description" content="A lecture on D3" />
+		<meta name="author" content="Randy J. Fortier" />
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+
+		<link rel="stylesheet" href="css/reveal.css" />
+		<link rel="stylesheet" href="css/theme/black.css" id="theme" />
+
+		<!-- Printing and PDF exports -->
+		<script>
+			// generating PDFs and printable documents
+            var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			//link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            
+            // code syntax highlighting
+			link.href = window.location.search.match(/print-pdf/gi) ? 'lib/css/printable.css' : 'lib/css/zenburn.css';
+			document.getElementsByTagName('head')[0].appendChild(link);
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+                <section data-background="images/UOIT_background2.png"
+                         data-background-size="70%"
+				         data-transition="fad"
+                         class="title">
+					<h1 style="margin-left: 342px">D3 and SVG</h1>
+					<h3 style="margin-left: 342px">Dynamic and Graphical</h3>
+					<p style="margin-left: 342px">
+						<small>
+                            Randy J. Fortier<br />
+                            <a href="mailto:randy.fortier@uoit.ca">randy.fortier@uoit.ca</a><br />
+                            <a href="http://twitter.com/randy_fortier">@randy_fortier</a>
+                        </small>
+					</p>
+				</section>
+
+				<section data-transition='fade'>
+					<h2>Outline</h2>
+					<ul>
+                        <li>Scalable Vector Graphics</li>
+                        <li>D3
+                            <ul>
+                                <li>Basics</li>
+                                <li>Data loading and binding</li>
+                                <li>Scales</li>
+                                <li>Layouts</li>
+                                <li>Animations</li>
+                            </ul>
+                        </li>
+					</ul>
+				</section>
+
+                <section data-transition="fade">
+                    <section data-background="images/UOIT_background1.png"
+                             data-background-size="70%"
+                             data-transition="fade"
+                             class="title">
+                        <h1 style="margin-left: 342px">D3 and SVG</h1>
+                        <h3 style="margin-left: 342px">SVG</h3>
+                    </section>
+                    
+                    <section data-transition='fade'>
+                        <h2>Scalable Vector Graphics (SVG)</h2>
+                        <ul>
+                            <li>XML-based language for specifying vector graphics
+                                <ul>
+                                    <li>Vector graphics scale with no loss in quality</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <pre><code class="hljs xml" data-trim contenteditable>
+&lt;svg width="100" height="100"&gt;
+  &lt;circle cx="50" cy="50" r="40" 
+          stroke="black" stroke-width="2" fill="red" /&gt;
+&lt;/svg&gt;
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Shapes</h2>
+                        <ul>
+                            <li>Primitives:
+                                <ul>
+                                    <li>Circle</li>
+                                    <li>Ellipse</li>
+                                    <li>Rectangle</li>
+                                    <li>Line</li>
+                                    <li>Polyline</li>
+                                    <li>Polygon</li>
+                                    <li>Text</li>
+                                </ul>
+                            </li>
+                            <li>Paths</li>
+                        </ul>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Primitives</h2>
+                        <ul>
+                            <li>Circles:</li>
+                        </ul>
+                        <pre><code class="hljs xml" data-trim contenteditable>
+&lt;circle cx="0" cy="0" r="200" 
+        stroke="black" stroke-width="2" fill="yellow" /&gt;
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Primitives</h2>
+                        <ul>
+                            <li>Circles
+                                <ul>
+                                    <li>with CSS styling:</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <pre><code class="hljs xml" data-trim contenteditable>
+&lt;circle cx="0" cy="0" r="200" 
+        style="fill:yellow; stroke:black; stroke-width:2" /&gt;
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Primitives</h2>
+                        <ul>
+                            <li>Circles
+                                <ul>
+                                    <li>SVG:
+                        <pre><code class="hljs xml" style="width: 600px" data-trim contenteditable>
+&lt;circle cx="0" cy="0" r="200" id="face" /&gt;
+                        </code></pre>
+                                    </li>
+                                    <li>CSS:
+                        <pre><code class="hljs css" style="width: 600px" data-trim contenteditable>
+circle#face {
+  fill: yellow; 
+  stroke: black; 
+  stroke-width: 2;
+}
+                        </code></pre>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Primitives</h2>
+                        <ul>
+                            <li>Ellipses:
+                            </li>
+                        </ul>
+                        <pre><code class="hljs xml" data-trim contenteditable>
+&lt;ellipse cx="900" cy="125" rx="100" ry="75" 
+         style="fill:red; stroke:black; stroke-width:2" /&gt;
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Primitives</h2>
+                        <ul>
+                            <li>Rectangle:
+                            </li>
+                        </ul>
+                        <pre><code class="hljs xml" data-trim contenteditable>
+&lt;rect x="550" y="50" width="200" height="150" 
+      style="fill:blue; stroke:black; stroke-width:5; opacity:0.5" /&gt;
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Primitives</h2>
+                        <ul>
+                            <li>Line:
+                            </li>
+                        </ul>
+                        <pre><code class="hljs xml" data-trim contenteditable>
+&lt;line x1="550" y1="250" x2="750" y2="400"   
+      style="stroke:rgb(128,128,128); stroke-width:2" /&gt;
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Primitives</h2>
+                        <ul>
+                            <li>Polyline:
+                            </li>
+                        </ul>
+                        <pre><code class="hljs xml" data-trim contenteditable>
+&lt;polyline points="550,450 650,575 750,490 850,560 950,515"
+          style="fill:none; stroke:black; stroke-width:2" /&gt;
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Primitives</h2>
+                        <ul>
+                            <li>Polygon:
+                            </li>
+                        </ul>
+                        <pre><code class="hljs xml" data-trim contenteditable>
+&lt;polygon points="800,325 950,270 1000,325 960,400 900,375" 
+         style="fill:blue; stroke:black; stroke-width:2" /&gt;
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Paths</h2>
+                        <ul>
+                            <li>A path allows for sequences of:
+                                <ul>
+                                    <li>Lines</li>
+                                    <li>Elliptical arcs</li>
+                                    <li>Bezier curves</li>
+                                </ul>
+                            </li>
+                            <li>Details can be found at <a href="https://developer.mozilla.org/en/docs/Web/SVG/Tutorial/Paths">Mozilla Developer Network</a></li>
+                        </ul>
+                        <pre><code class="hljs xml" data-trim contenteditable>
+&lt;path d="M90.92974268256818,41.61468365471425A100,100 0 0,1 -90.92974268256816,41.614683654714256L-72.74379414605453,33.291746923771406A80,80 0 0,0 72.74379414605454,33.2917469237714Z"&gt;&lt;/path&gt;
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Stroke</h2>
+                        <ul>
+                            <li>The stroke is the style of the lines
+                                <ul>
+                                    <li>Colour</li>
+                                    <li>Thickness</li>
+                                    <li>Line cap/joins</li>
+                                    <li>Dashing</li>
+                                    <li>Opacity</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <pre><code class="hljs xml" data-trim contenteditable>
+&lt;line x1="0"  y1="100" x2="10"  y2="20" 
+      stroke="black" stroke-width="20" 
+      stroke-linecap="butt" stroke-linejoin="bevel" /&gt;
+&lt;line x1="10" y1="90"  x2="110" y2="10" stroke-opacity="0.5"
+      stroke="black" stroke-width="20" stroke-dasharray="5,5"
+      stroke-linecap="round" stroke-linejoin="miter" /&gt;
+&lt;line x1="20" y1="80"  x2="120" y2="0"
+      stroke="black" stroke-width="20" stroke-dasharray="5,3"
+      stroke-linecap="square" stroke-linejoin="round" /&gt;
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Fill</h2>
+                        <ul>
+                            <li>The fill is the style of the interior of the shape
+                                <ul>
+                                    <li>Colour</li>
+                                    <li>Opacity</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <pre><code class="hljs xml" data-trim contenteditable>
+&lt;rect x="0"  y="0" width="10"  height="50" 
+      fill="blue" fill-opacity="0.8" /&gt;
+&lt;rect x="10" y="10" width="10"  height="50"
+      fill="red" fill-opacity="0.8" /&gt;
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Gradients</h2>
+                        <ul>
+                            <li>A gradient allows colour blends:
+                                <ul>
+                                    <li>Linear - left to right, top to bottom, across diagonal</li>
+                                    <li>Radial - from centre to outside</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <pre><code class="hljs xml" data-trim contenteditable>
+&lt;linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1"&gt;
+  &lt;stop offset="0%" stop-color="red" /&gt;
+  &lt;stop offset="50%" stop-color="orange" /&gt;
+  &lt;stop offset="100%" stop-color="yellow" /&gt;
+&lt;/linearGradient&gt;
+&lt;ellipse cx="200" cy="200" rx="75" ry="25"
+         style="fill:url(#gradient); stroke:black; stroke-width:2" /&gt;
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>SVG Transformations</h2>
+                        <ul>
+                            <li>Transformations
+                                <ul>
+                                    <li>Translation</li>
+                                    <li>Rotation</li>
+                                    <li>Scale</li>
+                                    <li>Skew</li>
+                                    <li>Arbitrary (with a matrix)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <pre><code class="hljs xml" data-trim contenteditable>
+&lt;g transform="translate(100,200),rotate(45)"&gt;
+  &lt;rect x="0" y="0" width="100" height="80" /&gt;
+  &lt;rect x="10" y="10" width="100" height="80" /&gt;
+&lt;/g&gt;
+                        </code></pre>
+                    </section>
+
+                </section>
+
+                <section data-transition="fade">
+                    <section data-background="images/UOIT_background1.png"
+                             data-background-size="70%"
+                             data-transition="fade"
+                             class="title">
+                        <h1 style="margin-left: 342px">D3 and SVG</h1>
+                        <h3 style="margin-left: 342px">D3.js Overview</h3>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>D3 Overview</h2>
+                        <ul>
+                            <li>Data-Driven Documents (D3.js)
+                                <ul>
+                                    <li>A JavaScript library quite similar to jQuery</li>
+                                    <li>D3.js, however, is structured around data</li>
+                                    <li>It is more declarative than jQuery</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <section data-transition='fade'>
+                        <h2>Importing D3.js</h2>
+                        <ul>
+                            <li>Much like jQuery, you can:
+                                <ul>
+                                    <li>Download and import locally</li>
+                                    <li>Import a specific version from a CDN</li>
+                                    <li>Import the latest version from a CDN:</li>
+                                </ul>
+                        </ul>
+                        <pre><code class="hljs html" data-trim contenteditable>
+&lt;script src="https://d3js.org/d3.v3.min.js" charset="utf-8"&gt;&lt;/script&gt;
+                        </code></pre>
+                    </section>
+                    
+                    <section data-transition='fade'>
+                        <h2>Selection in D3.js</h2>
+                        <ul>
+                            <li>Selection is very similar to queries in jQuery</li>
+                            <li>Select a single element:
+                                <pre><code class="hljs javascript" style="width: 700px" data-trim contenteditable>
+d3.select("body").style("background-color", "black");
+                                </code></pre>
+                            </li>
+                            <li>Select multiple elements:
+                                <pre><code class="hljs javascript" style="width: 700px" data-trim contenteditable>
+d3.selectAll("th").style("background-color", "lightGray");
+                                </code></pre>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <section data-transition='fade'>
+                        <h2>Method Chaining</h2>
+                        <ul>
+                            <li>Like jQuery, D3.js supports method chaining</li>
+                            <li>Many methods return the object on which the method is operating</li>
+                        </ul>
+                        <pre><code class="hljs javascript" data-trim contenteditable>
+var canvas = d3.select("body")
+               .append("svg")
+               .attr("width", 500)
+               .attr("height", 500);
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>Dynamic Property Values</h2>
+                        <ul>
+                            <li>Properties can be static or dynamic values
+                                <ul>
+                                    <li>Static - the actual value is hard coded</li>
+                                    <li>Dynamic - the value is determined by a function:</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <pre><code class="hljs javascript" data-trim contenteditable>
+var colours = ['blue', 'red', 'green', 'yellow', 'orange'];
+d3.selectAll("p")
+  .style("color", function(data, index) { return colours[index]; });
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>Adding New Elements</h2>
+                        <ul>
+                            <li>You can add any elements that you like:</li>
+                        </ul>
+                        <pre><code class="hljs javascript" data-trim contenteditable>
+d3.select("body")
+  .append("p")
+  .attr("id", "dynamicParagraph")
+  .text("This is a brand new paragraph")
+  .style("color", "white");
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>Data Binding</h2>
+                        <ul>
+                            <li>Data binding is the heart of D3</li>
+                            <li>D3 associates data elements with DOM elements</li>
+                        </ul>
+                        <pre><code class="hljs javascript" data-trim contenteditable>
+var dataArray = [1,2,3,4,5];
+var circles = canvas.selectAll("circle")
+                    .data(dataArray)
+                    .attr("fill", "blue");
+                        </code></pre>
+                    </section>
+                    
+                    <section data-transition='fade'>
+                        <h2>Data Binding</h2>
+                        <ul>
+                            <li>When the selectAll() does not return enough elements, enter() is invoked</li>
+                        </ul>
+                        <pre><code class="hljs javascript" data-trim contenteditable>
+canvas.selectAll("circle")
+      .data(dataValues)
+      .enter()
+        .append("circle")
+        .attr("fill", "red")
+        .attr("stroke", "black")
+        .attr("stroke-width", "2")
+        .attr("r", 50)
+        .attr("cx", 600)
+        .attr("cy", function(data, index) {
+            return data;
+        });
+                        </code></pre>
+                    </section>
+                    
+                    <section data-transition='fade'>
+                        <h2>Data Binding</h2>
+                        <ul>
+                            <li>When the selectAll() returns too many elements, exit() is invoked on the extras</li>
+                        </ul>
+                        <pre><code class="hljs javascript" data-trim contenteditable>
+canvas.selectAll("circle")
+      .data(dataValues)
+      .exit()
+        .attr("fill", "gray");
+                        </code></pre>
+                    </section>
+                    
+                    <section data-transition='fade'>
+                        <h2>Data Loading</h2>
+                        <ul>
+                            <li>Loading from a CSV file is quite easy:</li>
+                        </ul>
+                        <pre><code class="hljs javascript" style="width: 580px; float: left" data-trim contenteditable>
+d3.csv('sales_data.csv', function(salesData) {
+   canvas.selectAll("circle")
+      .data(salesData)
+      .enter()
+         .append("circle")
+         .attr("cx", function(data, index) { 
+            return index * 50 + 50; 
+         })
+         .attr("cy", function(data, index) { 
+            return 300 - (data.sales / 10); 
+         })
+         .attr("r", 10)
+         .attr("fill", "red");
+});
+                        </code></pre>
+                        <div style="float: left; width: 20px">&nbsp;</div>
+                        <pre><code class="hljs csv" style="width: 120px" data-trim contenteditable>
+year,sales
+2010,1076
+2011,1214
+2012,1107
+2013,1520
+2014,1712
+2015,1606
+2016,2188
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>Data Loading</h2>
+                        <ul>
+                            <li>Loading from a JSON file works the same way:</li>
+                        </ul>
+                        <pre><code class="hljs javascript" data-trim contenteditable>
+d3.json('sales.json', function(salesData) {
+   canvas.selectAll("circle")
+      .data(salesData)
+      .enter()
+         .append("circle")
+         .attr("cx", function(data, index) { 
+            return index * 50 + 50; 
+         })
+         .attr("cy", function(data, index) { 
+            return 300 - (data.sales / 10); 
+         })
+         .attr("r", 10)
+         .attr("fill", "red");
+});
+                        </code></pre>
+                    </section>
+
+                    <section data-transition='fade'>
+                        <h2>Layouts</h2>
+                        <ul>
+                            <li>Layouts determine where components should go
+                                <ul>
+                                    <li><span class="code">Chord</span> - generates arcs and chord shapes, based on relationships</li>
+                                    <li><span class="code">Cluster</span> - organizes components into a tree with all leafs in the same position</li>
+                                    <li><span class="code">Force</span> - uses physics (e.g. verlet, gravity) to position components</li>
+                                    <li><span class="code">Histogram</span> - bar chart with quantization</li>
+                                    <li><span class="code">Pack</span> - circles within circles, hierarchically</li>
+                                    <li><span class="code">Partition</span> - recursively subdivide pie/donut arcs</li>
+                                    <li><span class="code">Pie</span> - compute the angles for pie and donut charts</li>
+                                    <li><span class="code">Stack</span> - compute locations for stacked bar or area charts</li>
+                                    <li><span class="code">Tree</span> - organize components into a constant-sized tree</li>
+                                    <li><span class="code">Treemap</span> - organize components into a dynamically-sized tree</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <section data-transition='fade'>
+                        <h2>Scales</h2>
+                        <ul>
+                            <li>Scales map inputs to outputs
+                                <ul>
+                                    <li><span class="code">Linear</span> - maps on a linear relationship (i.e. y = mx + b)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <pre><code class="hljs javascript" data-trim contenteditable>
+var colourScale = d3.scale.linear()
+                          .domain([1000, 2500])
+                          .range(["orange", "blue"]);
+...
+canvas.append("circle")
+      .attr("cx", "100")
+      .attr("cy", "100")
+      .attr("r", "20")
+      .attr("fill", function(data) { return colourScale(data.value); })
+
+                        </code></pre>
+                    </section>
+                    
+                    <section data-transition='fade'>
+                        <h2>Animations</h2>
+                        <ul>
+                            <li>Transitions and delays
+                            </li>
+                        </ul>
+                        <pre><code class="hljs javascript" data-trim contenteditable>
+canvas.selectAll("rect")
+      .transition()
+      .delay(2000)
+      .duration(1000)
+      .attr("y", function(data, index) {
+         return 250;
+      });
+                        </code></pre>
+                    </section>
+                    
+                </section>
+
+				<section>
+					<h2>Wrap-Up</h2>
+					<ul>
+                        <li>In this section, we learned about:
+                            <ul>
+                                <li>SVG
+                                </li>
+                                <li>D3
+                                    <ul>
+                                        <li>DOM manipulation</li>
+                                        <li>Data loading and binding</li>
+                                        <li>Layouts</li>
+                                        <li>Scales</li>
+                                        <li>Animation</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+					</ul>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				menu: { // Menu works best with font-awesome installed: sudo apt-get install fonts-font-awesome
+					themes: false,
+					transitions: false,
+					markers: true,
+					hideMissingTitles: true,
+					custom: [
+				            { title: 'Plugins', icon: '<i class="fa fa-external-link"></i>', src: 'toc.html' },
+				            { title: 'About', icon: '<i class="fa fa-info"></i>', src: 'about.html' }
+				        ]
+				},
+                transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/chalkboard/chalkboard.js'},
+                    { src: 'plugin/menu/menu.js'}
+				],
+				chalkboard: { // font-awesome.min.css must be available
+					src: "chalkboard/chalkboard.json",
+					toggleChalkboardButton: { left: "80px" },
+					toggleNotesButton: { left: "130px" },
+//					theme: "whiteboard",
+//					background: [ 'rgba(127,127,127,.1)' , 'reveal.js-plugins/chalkboard/img/whiteboard.png' ],
+//					pen: [ 'plugin/chalkboard/img/boardmarker.png' , 'plugin/chalkboard/img/boardmarker.png' ],
+//				        color: [ 'rgba(0,119,255,1)', 'rgba(0,119,255,0.5)' ],
+//				        draw: [ (RevealChalkboard) ?  RevealChalkboard.drawWithPen : null , (RevealChalkboard) ? RevealChalkboard.drawWithPen : null ],
+				},
+				keyboard: {
+				    67: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle chalkboard when 'c' is pressed
+				    66: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+				    46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+				     8: function() { RevealChalkboard.reset() },	// reset all chalkboard data when 'BACKSPACE' is pressed
+				    68: function() { RevealChalkboard.download() },	// downlad chalkboard drawing when 'd' is pressed
+				},
+            });
+
+		</script>
+		<script src="js/uoit.js"></script>
+
+	</body>
+</html>
